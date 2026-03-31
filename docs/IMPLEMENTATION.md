@@ -47,7 +47,12 @@ See: `chronicles/phase-0-baseline.md`
 - [x] **1.7** Post list numbering: counts down from total (postslist.njk + CSS counter)
 - [x] **1.8** Measure: `min(90%, 40rem)` — rem-based, header/body same width
 - [x] **1.9** Code block font size: `main pre[class*="language-"]` at `0.8em` beats Prism's 1em
-- [ ] Visual verify in browser
+- [x] Visual verify in browser
+- [x] **1.10** Nav footer: remove bullets, shorten labels to "the past"/"the future"
+- [x] **1.11** Site footer: New England flag, name left / place right, single border
+- [x] **1.12** Body font: JetBrains Mono via Google Fonts
+- [x] **1.13** Background: #eeede9 warm gray
+- [x] **1.14** About nav title: capitalized via eleventyNavigation title field
 
 ### What's next
 

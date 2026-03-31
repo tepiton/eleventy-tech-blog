@@ -51,3 +51,18 @@
 **Files**: `css/index.css`, `_includes/postslist.njk`
 
 **Decisions**: DEC-001 through DEC-004 in DECISIONS.md
+
+## Entry 4: Design polish — footer, fonts, background (2026-03-31)
+
+**What**: Footer redesign, JetBrains Mono body font, warm gray background.
+
+**Why**: Footer had two rules creating a visual cage; body font was Inter (wrong for a tech blog); background too close to white.
+
+**How**:
+- Footer: single border-top, name flush left, "Made in New England + flag" flush right
+- Post nav: removed border and bullets, labels shortened to "the past"/"the future"
+- Body font: JetBrains Mono added to Google Fonts link, set as `--font-body`
+- Background: `#eeede9` (two steps darker than family default)
+- About nav title: added `title: About` to eleventyNavigation front matter
+
+**Files**: commit e22f2d0
