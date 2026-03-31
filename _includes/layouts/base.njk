@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="{{ metadata.language }}">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>{{ title or metadata.title }}</title>
+		<meta name="description" content="{{ description or metadata.description }}">
+		<meta name="theme-color" content="#e6e6e6" media="(prefers-color-scheme: light)">
+		<meta name="theme-color" content="#0e1116" media="(prefers-color-scheme: dark)">
+		<meta name="referrer" content="strict-origin-when-cross-origin">
+		<link rel="canonical" href="{{ metadata.url }}{{ page.url }}">
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="{% if page.url == '/' %}website{% else %}article{% endif %}">
+		<meta property="og:url" content="{{ metadata.url }}{{ page.url }}">
+		<meta property="og:title" content="{{ title or metadata.title }}">
+		<meta property="og:description" content="{{ description or metadata.description }}">
+		<meta property="og:site_name" content="{{ metadata.title }}">
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary">
+		<meta property="twitter:url" content="{{ metadata.url }}{{ page.url }}">
+		<meta property="twitter:title" content="{{ title or metadata.title }}">
+		<meta property="twitter:description" content="{{ description or metadata.description }}">
+		<meta property="twitter:creator" content="@pborenstein">
+		
+		<!-- Additional meta tags for development blog -->
+		<meta name="author" content="{{ metadata.author.name }}">
+		<meta name="keywords" content="git, eleventy, static sites, web development, llm, css, javascript">
+		<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
+
+	<link rel="icon" href="/icons/favicon-32.png" sizes="32x32">
+  <link rel="icon" href="/icons/favicon-57.png" sizes="57x57">
+  <link rel="icon" href="/icons/favicon-76.png" sizes="76x76">
+  <link rel="icon" href="/icons/favicon-96.png" sizes="96x96">
+  <link rel="icon" href="/icons/favicon-128.png" sizes="128x128">
+  <link rel="icon" href="/icons/favicon-192.png" sizes="192x192">
+  <link rel="icon" href="/icons/favicon-228.png" sizes="228x228">
+
+		{#- Uncomment this if you’d like folks to know that you used Eleventy to build your site!  #}
+		{#- <meta name="generator" content="{{ eleventy.generator }}"> #}
+
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+		{#-
+		Plain-text bundles are provided via the `eleventy-plugin-bundle` plugin:
+		1. CSS:
+			* Add to a per-page bundle using `{% css %}{% endcss %}`
+			* Retrieve bundle content using `{% getBundle "css" %}` or `{% getBundleFileUrl "css" %}`
+		2. Or for JavaScript:
+			* Add to a per-page bundle using `{% js %}{% endjs %}`
+			* Retrieve via `{% getBundle "js" %}` or `{% getBundleFileUrl "js" %}`
+		3. Learn more: https://github.com/11ty/eleventy-plugin-bundle
+		#}
+
+		{#- Add the contents of a file to the bundle #}
+		<style>{% include "css/index.css" %}</style>
+		{#- Or you can add from node_modules #}
+		{# <style>{% include "node_modules/prismjs/themes/prism-okaidia.css" %}</style> #}
+
+		{#- Render the CSS bundle using inlined CSS (for the fastest site performance in production) #}
+		<style>{% getBundle "css" %}</style>
+		{#- Renders the CSS bundle using a separate file, if you can't set CSP directive style-src: 'unsafe-inline' #}
+		{#- <link rel="stylesheet" href="{% getBundleFileUrl "css" %}"> #}
+
+		{#- Add the heading-anchors web component to the JavaScript bundle #}
+		<script type="module">{% include "node_modules/@zachleat/heading-anchors/heading-anchors.js" %}</script>
+		<script type="module" src="/js/footnote-interactions.js"></script>
+	</head>
+	<body>
+		<a href="#main" id="skip-link" class="visually-hidden">Skip to main content</a>
+
+		<header>
+			<a href="/" class="home-link">{{ metadata.title }}</a>
+
+			{#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
+			<nav>
+				<h2 class="visually-hidden">Top level navigation menu</h2>
+				<ul class="nav">
+				{%- for entry in collections.all | eleventyNavigation %}
+					<li class="nav-item"><a href="{{ entry.url }}"{% if entry.url == page.url %} aria-current="page"{% endif %}>{{ entry.title }}</a></li>
+				{%- endfor %}
+				</ul>
+			</nav>
+
+			<div class="theme-switcher">
+				<button id="theme-toggle" class="theme-toggle" title="Change theme">◑</button>
+				<div id="theme-options" class="theme-options">
+					<a href="#" class="theme-option" data-theme="light">
+						<span class="theme-option-icon">☀</span>
+						<span>Light</span>
+					</a>
+					<a href="#" class="theme-option" data-theme="dark">
+						<span class="theme-option-icon">☽</span>
+						<span>Dark</span>
+					</a>
+					<a href="#" class="theme-option" data-theme="system">
+						<span class="theme-option-icon">◑</span>
+						<span>System</span>
+					</a>
+				</div>
+			</div>
+		</header>
+
+		<main id="main">
+			<heading-anchors content="">
+				{{ content | safe }}
+			</heading-anchors>
+		</main>
+
+		<footer role="contentinfo">
+			<div>
+				Made in New England
+			</div>
+			<div>
+				<span>&copy; 2025</span>
+			</div>
+			<div>
+				<a rel="me" href="mailto:{{ metadata.author.email }}" aria-label="Email {{ metadata.author.name }}">{{ metadata.author.name }}</a>
+			</div>
+		</footer>
+
+		<!-- This page `{{ page.url }}` was built on {% currentBuildDate %} -->
+		<script type="module" src="{% getBundleFileUrl "js" %}"></script>
+		<script type="module" src="/js/theme-switcher.js"></script>
+    {% mermaid_js %}
+	</body>
+</html>

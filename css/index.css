@@ -1,0 +1,1297 @@
+/* =======================================================
+   VARIABLES DEFINITIONS
+   ======================================================= */
+:root {
+  /* Typography */
+  --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-family-serif: 'JetBrains Mono', Consolas, Menlo, Monaco, 'Courier New', monospace;
+  --font-family-monospace: 'JetBrains Mono', Consolas, Menlo, Monaco, 'Courier New', monospace;
+  --font-family-body: 'JetBrains Mono', Consolas, Menlo, Monaco, 'Courier New', monospace;
+  --sans-serif-features: "kern", "liga", "clig", "calt";
+  --syntax-tab-size: 2;
+  --postlist-index: 1;
+
+  /* Theme Colors - Light (default) */
+  --light-gray-20: #e0e0e0;
+  --light-gray-50: #C0C0C0;
+  --light-gray-90: #333;
+  --light-background: #e6e6e6;
+  --light-text: var(--light-gray-90);
+  --light-link: #082840;
+  --light-link-active: #5f2b48;
+  --light-link-visited: #17050F;
+  --light-heading: #B92929;
+  --light-table-even: #c8c5c5;
+
+  /* Theme Colors - Dark */
+  --dark-gray-20: #444;
+  --dark-gray-50: #888;
+  --dark-gray-90: #e8e8e8;
+  --dark-background: #0f1419;
+  --dark-text: var(--dark-gray-90);
+  --dark-link: #66b3ff;
+  --dark-link-active: #4da6ff;
+  --dark-link-visited: #9999ff;
+  --dark-heading: #ffffff;
+  --dark-table-even: #1a1f26;
+
+  /* Active Theme Variables (defaults to light) */
+  --color-gray-20: var(--light-gray-20);
+  --color-gray-50: var(--light-gray-50);
+  --color-gray-90: var(--light-gray-90);
+  --background-color: var(--light-background);
+  --text-color: var(--light-text);
+  --text-color-link: var(--light-link);
+  --text-color-link-active: var(--light-link-active);
+  --text-color-link-visited: var(--light-link-visited);
+  --color-heading: var(--light-heading);
+  --table-even-background: var(--light-table-even);
+}
+
+/* =======================================================
+   THEME SWITCHING
+   ======================================================= */
+/* System preference for dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-gray-20: var(--dark-gray-20);
+    --color-gray-50: var(--dark-gray-50);
+    --color-gray-90: var(--dark-gray-90);
+    --background-color: var(--dark-background);
+    --text-color: var(--dark-text);
+    --text-color-link: var(--dark-link);
+    --text-color-link-active: var(--dark-link-active);
+    --text-color-link-visited: var(--dark-link-visited);
+    --color-heading: var(--dark-heading);
+    --table-even-background: var(--dark-table-even);
+  }
+}
+
+/* User preference overrides (highest specificity) */
+html[data-force-theme="light"],
+body.light-mode {
+  --color-gray-20: var(--light-gray-20);
+  --color-gray-50: var(--light-gray-50);
+  --color-gray-90: var(--light-gray-90);
+  --background-color: var(--light-background);
+  --text-color: var(--light-text);
+  --text-color-link: var(--light-link);
+  --text-color-link-active: var(--light-link-active);
+  --text-color-link-visited: var(--light-link-visited);
+  --color-heading: var(--light-heading);
+  --table-even-background: var(--light-table-even);
+}
+
+html[data-force-theme="dark"],
+body.dark-mode {
+  --color-gray-20: var(--dark-gray-20);
+  --color-gray-50: var(--dark-gray-50);
+  --color-gray-90: var(--dark-gray-90);
+  --background-color: var(--dark-background);
+  --text-color: var(--dark-text);
+  --text-color-link: var(--dark-link);
+  --text-color-link-active: var(--dark-link-active);
+  --text-color-link-visited: var(--dark-link-visited);
+  --color-heading: var(--dark-heading);
+  --table-even-background: var(--dark-table-even);
+}
+
+/* Dark mode font weight adjustments */
+html[data-force-theme="dark"] body,
+body.dark-mode {
+  font-weight: 300;
+}
+
+html[data-force-theme="dark"] h1,
+html[data-force-theme="dark"] h2,
+html[data-force-theme="dark"] h3,
+html[data-force-theme="dark"] h4,
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4 {
+  color: var(--dark-heading) !important;
+}
+
+html[data-force-theme="dark"] h1,
+body.dark-mode h1 {
+  font-weight: 800;
+}
+
+html[data-force-theme="dark"] h2,
+body.dark-mode h2 {
+  font-weight: 700;
+  border-bottom-color: var(--color-gray-50);
+}
+
+html[data-force-theme="dark"] h3,
+body.dark-mode h3 {
+  font-weight: 700;
+}
+
+html[data-force-theme="dark"] h4,
+body.dark-mode h4 {
+  font-weight: 600;
+}
+
+html[data-force-theme="dark"] code:not([class]),
+body.dark-mode code:not([class]) {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-color);
+}
+
+/* Dark mode postlist fixes */
+html[data-force-theme="dark"] .postlist-title,
+body.dark-mode .postlist-title {
+  color: var(--dark-heading) !important;
+}
+
+html[data-force-theme="dark"] .postlist-link,
+body.dark-mode .postlist-link {
+  color: var(--dark-link) !important;
+}
+
+html[data-force-theme="dark"] .postlist-link:visited,
+body.dark-mode .postlist-link:visited {
+  color: var(--dark-link-visited) !important;
+}
+
+html[data-force-theme="dark"] .postlist-link:hover,
+html[data-force-theme="dark"] .postlist-link:active,
+body.dark-mode .postlist-link:hover,
+body.dark-mode .postlist-link:active {
+  color: var(--dark-link-active) !important;
+}
+
+/* Dark theme adjustments for footnote popovers */
+html[data-force-theme="dark"] .footnote-popover,
+body.dark-mode .footnote-popover {
+  border-color: var(--color-gray-20);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.4),
+    0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+html[data-force-theme="dark"] .footnote-popover:not(.arrow-up)::after,
+body.dark-mode .footnote-popover:not(.arrow-up)::after {
+  border-top-color: var(--background-color);
+}
+
+html[data-force-theme="dark"] .footnote-popover:not(.arrow-up)::before,
+body.dark-mode .footnote-popover:not(.arrow-up)::before {
+  border-top-color: var(--color-gray-20);
+}
+
+html[data-force-theme="dark"] .footnote-popover.arrow-up::after,
+body.dark-mode .footnote-popover.arrow-up::after {
+  border-bottom-color: var(--background-color);
+}
+
+html[data-force-theme="dark"] .footnote-popover.arrow-up::before,
+body.dark-mode .footnote-popover.arrow-up::before {
+  border-bottom-color: var(--color-gray-20);
+}
+
+/* Dark mode blockquote styling */
+html[data-force-theme="dark"] blockquote,
+body.dark-mode blockquote {
+  background: rgba(255, 255, 255, 0.03);
+  border-left-color: var(--color-gray-50);
+}
+
+html[data-force-theme="dark"] blockquote p,
+body.dark-mode blockquote p {
+  color: var(--dark-gray-90);
+}
+
+/* =======================================================
+   GLOBAL STYLES
+   ======================================================= */
+* {
+  box-sizing: border-box;
+}
+
+@view-transition {
+  navigation: auto;
+}
+
+html {
+  /* Improved fluid typography */
+  font-size: clamp(16px, 0.9rem + 0.8vw, 19px);
+  overflow-y: scroll;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0 auto;
+  font-family: var(--font-family-body);
+  font-weight: 400;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  line-height: 1.7;
+}
+
+body {
+  width: 62ch;
+  max-width: calc(100% - 2rem);
+  font-size: 0.9em;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* =======================================================
+   TYPOGRAPHY
+   ======================================================= */
+h1, h2, h3, h4 {
+  font-family: var(--font-family-monospace);
+  color: var(--color-heading);
+  margin-bottom: 0.5em;
+  margin-top: 1.5em;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 1.8em;
+  font-weight: 700;
+  margin-top: 0;
+}
+
+h2 {
+  font-size: 1.5em;
+  font-weight: 600;
+  border-bottom: 2px solid var(--color-gray-20);
+  padding-bottom: 0.25em;
+}
+
+h3 {
+  font-size: 1.25em;
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 1.1em;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.95em;
+}
+
+p {
+  margin: 0 0 1.2em 0;
+  line-height: 1.65;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+li {
+  line-height: 1.6;
+  margin-bottom: 0.3em;
+}
+
+ul, ol {
+  margin: 1em 0;
+  padding-left: 1.8em;
+}
+
+ul li {
+  margin-bottom: 0.4em;
+}
+
+ol li {
+  margin-bottom: 0.4em;
+}
+
+blockquote {
+  margin: 1.5em 0;
+  padding: 1em 1.5em;
+  border-left: 4px solid var(--color-gray-50);
+  background: rgba(0, 0, 0, 0.02);
+  font-style: normal;
+  position: relative;
+}
+
+blockquote p {
+  margin: 0;
+  font-size: 0.95em;
+  line-height: 1.6;
+  color: var(--color-gray-90);
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* Details and Summary styling */
+details {
+  margin: 2em 0;
+  border: 1px solid var(--color-gray-20);
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.01);
+}
+
+summary {
+  padding: 1em 1.25em;
+  cursor: pointer;
+  font-weight: 500;
+  background: rgba(0, 0, 0, 0.02);
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+summary:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+details[open] summary {
+  border-bottom-color: var(--color-gray-20);
+  margin-bottom: 0;
+}
+
+details > div,
+details > *:not(summary) {
+  padding: 1.25em;
+  padding-top: 1em;
+}
+
+/* Dark mode details styling */
+html[data-force-theme="dark"] details,
+body.dark-mode details {
+  border-color: var(--dark-gray-20);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+html[data-force-theme="dark"] summary,
+body.dark-mode summary {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+html[data-force-theme="dark"] summary:hover,
+body.dark-mode summary:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+html[data-force-theme="dark"] details[open] summary,
+body.dark-mode details[open] summary {
+  border-bottom-color: var(--dark-gray-20);
+}
+
+.sans-serif {
+  font-family: var(--font-family-sans);
+}
+
+.small-caps {
+  font-variant: small-caps;
+  text-transform: lowercase;
+}
+
+/* =======================================================
+   ACCESSIBILITY
+   ======================================================= */
+/* https://www.a11yproject.com/posts/how-to-hide-content/ */
+.visually-hidden:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+#skip-link {
+  text-decoration: none;
+  background: var(--background-color);
+  color: var(--text-color);
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--color-gray-90);
+  border-radius: 2px;
+
+  &.visually-hidden:focus {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    /* Ensure it is positioned on top of everything else when it is shown */
+    z-index: 999;
+  }
+}
+
+/* =======================================================
+   MEDIA
+   ======================================================= */
+/* Fluid images via https://www.zachleat.com/web/fluid-images/ */
+img {
+  max-width: 100%;
+
+  &[width][height] {
+    height: auto;
+  }
+
+  &[src$=".svg"] {
+    width: 100%;
+    height: auto;
+    max-width: none;
+  }
+}
+
+video,
+iframe {
+  width: 100%;
+  height: auto;
+}
+
+iframe {
+  aspect-ratio: 16/9;
+}
+
+/* =======================================================
+   LINKS
+   ======================================================= */
+a[href] {
+  color: var(--text-color-link);
+  text-decoration-skip: ink;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 0.5px;
+
+  &:visited {
+    color: var(--text-color-link-visited);
+  }
+
+  &:hover,
+  &:active {
+    color: var(--text-color-link-active);
+  }
+}
+
+/* Dark mode: blue link styling */
+html[data-force-theme="dark"] a[href],
+body.dark-mode a[href] {
+  color: var(--dark-link);
+  text-decoration-color: var(--dark-link);
+  text-underline-offset: 3px;
+}
+
+html[data-force-theme="dark"] a[href]:visited,
+body.dark-mode a[href]:visited {
+  color: var(--dark-link-visited);
+  text-decoration-color: var(--dark-link-visited);
+}
+
+html[data-force-theme="dark"] a[href]:hover,
+html[data-force-theme="dark"] a[href]:active,
+body.dark-mode a[href]:hover,
+body.dark-mode a[href]:active {
+  color: var(--dark-link-active);
+  text-decoration-color: var(--dark-link-active);
+}
+
+/* =======================================================
+   LAYOUT
+   ======================================================= */
+main {
+  padding: 2rem 0;
+  hyphens: auto;
+}
+
+footer {
+  padding: 1.5rem 0;
+  hyphens: auto;
+}
+
+main :first-child {
+  margin-top: 0;
+}
+
+main article {
+  margin-bottom: 3rem;
+}
+
+header {
+  border-bottom: 1px solid var(--color-gray-20);
+  font-family: var(--font-family-sans);
+  font-size: .8em;
+  display: flex;
+  gap: 1.5em;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5em 0;
+  font-feature-settings: var(--sans-serif-features);
+  margin-bottom: 1rem;
+}
+
+.home-link {
+  flex-grow: 1;
+  font-size: 1.5em;
+  font-weight: 700;
+
+  &:link:not(:hover) {
+    text-decoration: none;
+  }
+}
+
+/* =======================================================
+   NAVIGATION
+   ======================================================= */
+.nav {
+  display: flex;
+  gap: .5em 1em;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.nav-item {
+  display: inline-block;
+
+  & a[href]:not(:hover) {
+    text-decoration: none;
+  }
+}
+
+.nav a[href][aria-current="page"] {
+  text-decoration: underline;
+}
+
+.links-nextprev {
+  display: flex;
+  justify-content: space-between;
+  gap: .5em 1em;
+  list-style: "";
+  border-top: 1px dashed var(--color-gray-20);
+  padding: 1em 0;
+  font-family: var(--font-family-sans);
+  font-size: 0.85em;
+  font-weight: 600;
+  font-feature-settings: var(--sans-serif-features);
+
+  & > * {
+    flex-grow: 1;
+  }
+
+  & a[href],
+  & a[href]:visited,
+  & a[href]:hover,
+  & a[href]:active {
+    text-decoration: none;
+  }
+}
+
+.links-nextprev-next {
+  text-align: right;
+}
+
+/* =======================================================
+   TABLES
+   ======================================================= */
+table {
+  margin: 1em 0;
+  width: 100%;
+  border-collapse: collapse;
+  position: relative;
+
+  & td,
+  & th {
+    padding-right: 1em;
+    vertical-align: top;
+    padding: 0.25em 0.375em;
+  }
+
+  & thead {
+    color: inherit;
+    font-weight: 700;
+    font-size: inherit;
+    font-family: var(--font-family-sans);
+    border-bottom: 1px solid var(--color-gray-50);
+    font-feature-settings: var(--sans-serif-features);
+  }
+
+  & tbody tr:nth-child(even) {
+    background-color: var(--table-even-background);
+  }
+}
+
+
+tr {
+  hyphens: none;
+}
+
+/* =======================================================
+   MONOSPACE / CODE
+   ======================================================= */
+pre,
+code {
+  font-family: var(--font-family-monospace);
+}
+
+pre:not([class*="language-"]) {
+  margin: .5em 0;
+  line-height: 1.375; /* 22px /16 */
+  -moz-tab-size: var(--syntax-tab-size);
+  -o-tab-size: var(--syntax-tab-size);
+  tab-size: var(--syntax-tab-size);
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  overflow-x: auto;
+}
+
+code {
+  word-break: keep-all;
+}
+
+/* naked code in other text */
+
+code:not([class]) {
+  font-size: 1em;
+  background: rgba(0, 0, 0, 0.06);
+  padding: 0.15em 0.3em;
+  border-radius: 3px;
+  color: var(--text-color);
+}
+
+/* for naked <code> */
+pre:not([class]) code:not([class]) {
+  background-color: inherit;
+  border: 0;
+  font-size: inherit;
+}
+
+/* Prism.js code blocks - increased specificity to override theme
+   Official Documentation:
+   - https://prismjs.com/ - Basic customization info
+   - https://css-tricks.com/syntax-highlighting-prism-on-a-next-js-site/ - Detailed styling examples
+   - https://github.com/PrismJS/prism-themes - Additional theme examples */
+pre[class*="language-"] {
+  font-size: inherit !important;
+  line-height: 1.2 !important;
+  margin: 0.5em 0;
+  padding: 1em;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+pre[class*="language-"] code {
+  font-family: var(--font-family-monospace) !important;
+  font-size: .85em !important;
+  line-height: 1.2 !important;
+}
+
+/* Additional specificity for stubborn Prism themes */
+code[class*="language-"] {
+  font-family: var(--font-family-monospace) !important;
+}
+
+/* =======================================================
+   POSTS LIST - Three-line layout
+   ======================================================= */
+.postlist {
+  counter-reset: start-from var(--postlist-index);
+  list-style: none;
+  padding: 0;
+  padding-left: 1.5rem;
+}
+
+.postlist-item {
+  font-family: var(--font-family-body);
+  counter-increment: start-from -1;
+  margin-bottom: 0.75em;
+  font-feature-settings: normal;
+  position: relative;
+
+  &:before {
+    display: inline-block;
+    pointer-events: none;
+    content: "" counter(start-from, decimal-leading-zero) ". ";
+    position: absolute;
+    left: -1.5rem;
+    top: 0.2em;
+    font-size: 0.8125em; /* 13px /16 */
+    color: var(--color-gray-90);
+    line-height: 1.4;
+    font-family: var(--font-family-body);
+  }
+}
+
+.postlist-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.postlist-title {
+  margin: 0;
+  font-size: 1.1875em; /* 19px /16 */
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-heading);
+}
+
+.postlist-link {
+  text-underline-position: from-font;
+  text-underline-offset: 0;
+  text-decoration-thickness: 1px;
+  color: var(--text-color-link);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:visited {
+    color: var(--text-color-link-visited);
+  }
+}
+
+.postlist-item-active .postlist-link {
+  font-weight: bold;
+}
+
+.postlist-date {
+  font-size: 0.65em; /* 13px /16 */
+  color: var(--color-gray-90);
+  margin: 0;
+  margin-top: .25em;
+  font-family: var(--font-family-serif);
+  font-style: italic;
+  font-feature-settings: normal;
+}
+
+.postlist-description {
+  font-size: 0.75em;
+  color: var(--color-gray-90);
+  max-width: 48ch;
+  margin: 0;
+  line-height: 1.4;
+  font-family: var(--font-family-body);
+  font-feature-settings: normal;
+  font-style: normal;
+  hyphens: none;
+}
+
+/* =======================================================
+   TAGS
+   ======================================================= */
+.post-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: lowercase;
+  font-family: var(--font-family-monospace);
+  font-size: .6em;
+  text-decoration: none;
+  border: 1px solid var(--color-gray-50);
+  border-radius: 0.5em;
+  padding: 0.4em 0.6em;
+  margin: 0.1em 0.3em;
+  transition: all 0.2s ease;
+  color: var(--color-gray-90) !important;
+  background: transparent;
+}
+
+.post-tag:hover {
+  border-color: var(--color-gray-90);
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* Dark theme tag styling - better contrast and modern look */
+html[data-force-theme="dark"] .post-tag,
+body.dark-mode .post-tag {
+  color: var(--dark-gray-90) !important;
+  border-color: var(--dark-gray-50);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+html[data-force-theme="dark"] .post-tag:hover,
+body.dark-mode .post-tag:hover {
+  border-color: var(--dark-gray-90);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+
+/* Tags list */
+.post-metadata {
+  font-size: 0.8125em;
+  font-family: var(--font-family-serif);
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: .5em;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  & time {
+    margin-right: 1em;
+  }
+}
+
+/* =======================================================
+   FOOTER
+   ======================================================= */
+footer {
+  font-family: var(--font-family-sans);
+  font-size: .5em;
+  font-style: italic;
+  color: var(--color-gray-50);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  font-feature-settings: var(--sans-serif-features);
+
+  & div {
+    max-width: 100%;
+  }
+
+  & div:nth-child(2) {
+    text-align: center;
+    flex: 1;
+  }
+
+  & div:nth-child(3) {
+    text-align: right;
+  }
+}
+
+@media (max-width: 640px) {
+  footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.25em;
+
+    & div:nth-child(2),
+    & div:nth-child(3) {
+      text-align: center;
+      flex: none;
+    }
+  }
+}
+
+/* =======================================================
+   FOOTNOTES
+   ======================================================= */
+.footnote-ref {
+  font-family: sans-serif;
+  font-size: 0.6em;
+}
+
+sup.footnote-ref a[href] {
+  text-decoration: none;
+  text-decoration-color: red;
+}
+
+/* Two-column balanced footnotes */
+.footnotes {
+  column-count: 2;          /* Split into two columns */
+  column-gap: 2em;          /* Space between columns */
+  column-fill: balance;     /* Balance content between columns */
+  margin-top: 2em;          /* Space above footnotes section */
+  padding-top: 1em;         /* Padding at the top */
+  border-top: 1px solid var(--color-gray-90); /* Subtle divider above footnotes */
+}
+
+/* Style the footnote list */
+.footnotes-list {
+  padding-left: 1em;        /* Indent the numbers */
+  margin: 0;                /* Remove default margins */
+}
+
+ol.footnotes-list li::marker {
+  font-family: sans-serif;
+  font-size: 0.6em;
+}
+
+/* Style each footnote item */
+.footnote-item {
+  break-inside: avoid;      /* Prevent footnotes from splitting across columns */
+  margin-bottom: 0.75em;    /* Space between footnotes */
+  line-height: 1.5;         /* Better line spacing */
+  font-size: 0.8em;
+  font-weight: 200;
+}
+
+/* Style the back-reference links */
+.footnote-backref {
+  text-decoration: none;
+  color: var(--color-gray-50);
+  margin-left: 0.5em;
+  font-size: .75em;
+
+  &:hover {
+    color: var(--text-color-link-active);
+  }
+}
+
+/* =======================================================
+   FOOTNOTE POPOVERS (CSS-FIRST APPROACH)
+   ======================================================= */
+.footnote-ref-wrapper {
+  position: relative;
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+.footnote-popover {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  
+  /* Ensure it doesn't interfere with text flow */
+  white-space: normal;
+  
+  /* Base styling */
+  background: var(--background-color);
+  border: 1px solid var(--color-gray-20);
+  border-radius: 8px;
+  padding: 1rem;
+  min-width: 250px;
+  max-width: 400px;
+  
+  /* Typography */
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--text-color);
+  
+  /* Shadow for depth */
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.15),
+    0 2px 4px rgba(0, 0, 0, 0.1);
+  
+  /* Hidden by default - completely removed from layout */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  
+  /* Smooth transitions */
+  transition: 
+    opacity 0.2s ease-in-out,
+    visibility 0.2s ease-in-out,
+    transform 0.2s ease-in-out;
+}
+
+/* Arrow pointing down (default - only when NOT arrow-up) */
+.footnote-popover:not(.arrow-up)::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 8px solid transparent;
+  border-top-color: var(--background-color);
+}
+
+/* Arrow border pointing down (default - only when NOT arrow-up) */
+.footnote-popover:not(.arrow-up)::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 9px solid transparent;
+  border-top-color: var(--color-gray-20);
+  margin-left: -1px;
+}
+
+/* Arrow pointing up (only when arrow-up class is present) */
+.footnote-popover.arrow-up::after {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 8px solid transparent;
+  border-bottom-color: var(--background-color);
+}
+
+/* Arrow border pointing up (only when arrow-up class is present) */
+.footnote-popover.arrow-up::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 9px solid transparent;
+  border-bottom-color: var(--color-gray-20);
+  z-index: -1;
+}
+
+/* Show popover when target is active */
+.footnote-ref-wrapper:target .footnote-popover {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(-8px);
+}
+
+/* Enhanced footnote reference styling */
+.footnote-ref-wrapper .footnote-ref {
+  position: relative;
+  z-index: 1001;
+}
+
+.footnote-ref-wrapper .footnote-ref:hover {
+  background: var(--color-gray-10);
+  border-radius: 3px;
+  padding: 1px 2px;
+}
+
+/* Close button styling */
+.footnote-popover-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 24px;
+  height: 24px;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  
+  font-size: 18px;
+  line-height: 1;
+  color: var(--color-gray-50);
+  text-decoration: none;
+  
+  transition: all 0.2s ease;
+}
+
+.footnote-popover-close:hover {
+  background: var(--color-gray-10);
+  color: var(--text-color);
+}
+
+/* =======================================================
+   MEDIA QUERIES
+   ======================================================= */
+@media (max-width: 767px) {
+  .footnotes {
+    column-count: 1;        /* Switch to single column on small screens */
+  }
+}
+
+/* Responsive positioning for mobile footnote popovers */
+@media (max-width: 640px) {
+  .footnote-popover {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    top: auto;
+    transform: none;
+    max-width: none;
+    min-width: auto;
+    
+    /* Different animation for mobile */
+    transform: translateY(100%);
+  }
+  
+  .footnote-popover::after,
+  .footnote-popover::before {
+    display: none; /* Hide arrow on mobile */
+  }
+  
+  .footnote-ref-wrapper:target .footnote-popover {
+    transform: translateY(0);
+  }
+}
+
+/* iPhone and mobile optimization */
+@media (max-width: 480px) {
+  html {
+    font-size: clamp(14px, 0.8rem + 0.8vw, 17px);
+  }
+  
+  body {
+    font-weight: 400;
+    padding: 0 0.75rem;
+  }
+  
+  main {
+    padding: 1.5rem 0;
+  }
+  
+  header {
+    padding: 1rem 0;
+    margin-bottom: 0.5rem;
+  }
+  
+  h1 {
+    font-size: 1.6em;
+    font-weight: 700;
+  }
+  
+  h2 {
+    font-size: 1.4em;
+    font-weight: 600;
+  }
+  
+  h3 {
+    font-size: 1.2em;
+    font-weight: 600;
+  }
+  
+  h4 {
+    font-size: 1em;
+    font-weight: 500;
+  }
+  
+  p {
+    line-height: 1.6;
+    margin: 0 0 1em 0;
+  }
+  
+  ul, ol {
+    margin: 0.5em 0;
+    padding-left: 1.2em;
+  }
+  
+  blockquote {
+    margin: 1em 0;
+    padding: 0.8em 1.2em;
+  }
+  
+  /* Mermaid diagrams - scale to fit mobile width */
+  .mermaid {
+    overflow-x: auto;
+    max-width: 100%;
+  }
+  
+  .mermaid svg {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+  
+  /* Smaller Prism code blocks on mobile */
+  pre[class*="language-"] code {
+    font-size: .8em !important;
+  }
+}
+
+/* =======================================================
+   THEME SWITCHER
+   ======================================================= */
+.theme-switcher {
+  position: relative;
+  margin-left: auto;
+}
+
+.theme-toggle {
+  background: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-size: 0.8em;
+  padding: 0.2em;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  width: 1.6em;
+  height: 1.6em;
+  color: var(--color-heading);
+}
+
+html[data-force-theme="dark"] .theme-toggle,
+body.dark-mode .theme-toggle {
+  border-color: transparent;
+  color: var(--color-heading);
+}
+
+.theme-toggle:hover {
+  background-color: var(--color-gray-20);
+  border-color: var(--color-gray-50);
+}
+
+.theme-options {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background-color: var(--background-color);
+  border: 1px solid var(--color-gray-50);
+  border-radius: 0.4em;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+  display: none;
+  flex-direction: column;
+  z-index: 10;
+  min-width: 8em;
+  margin-top: 0.4em;
+  font-family: var(--font-family-sans);
+  font-feature-settings: var(--sans-serif-features);
+}
+
+html[data-force-theme="dark"] .theme-options,
+body.dark-mode .theme-options {
+  border-color: var(--color-gray-50);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+}
+
+.theme-options.show {
+  display: flex;
+}
+
+.theme-option {
+  padding: 0.4em 0.8em;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 0.85em;
+}
+
+.theme-option:hover {
+  background-color: var(--color-gray-20);
+}
+
+.theme-option:first-child {
+  border-radius: 0.5em 0.5em 0 0;
+}
+
+.theme-option:last-child {
+  border-radius: 0 0 0.5em 0.5em;
+}
+
+.theme-option-icon {
+  margin-right: 0.8em;
+  font-size: 0.85em;
+  opacity: 0.9;
+}
+
+html[data-force-theme="dark"] .theme-option-icon,
+body.dark-mode .theme-option-icon {
+  opacity: 1;
+  color: var(--text-color);
+}
+
+@media (max-width: 640px) {
+  .theme-switcher {
+    margin-left: 0;
+    position: relative;
+  }
+
+  .theme-options {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 0.4em);
+    margin: 0;
+    min-width: 7.5em;
+    border-radius: 0.4em;
+  }
+}
+
