@@ -1,26 +1,27 @@
 ---
 phase: 1
-updated: 2026-03-30
-last_commit: 3853129
+updated: 2026-03-31
+last_commit: (pending)
 ---
 
 # Current Focus
 
-Phase 1 (template family alignment) is complete. Next work is post list numbering polish and any remaining design review.
+CSS polish: fixing code block font size, measure consistency, and post list numbering.
 
 ## Active Tasks
 
-- [ ] **1.7** Review post list numbering display (currently counts up, not reversed)
-- [ ] Design review: spot-check CSS on posts with footnotes, code blocks, mermaid
+- [x] **1.7** Post list numbering: counts down from total (fixed in postslist.njk + CSS counter)
+- [x] **1.8** Measure: switched from `ch` to `rem` so header and body are same width
+- [x] **1.9** Code block font size: higher-specificity `main pre[class*="language-"]` overrides Prism's 1em
+- [ ] Visual verify: check fixes in browser
 
 ## Context
 
-- Font swap to Typekit: change 2 `<link>` tags in `base.njk` (marked `<!-- fonts: -->`) + 3 CSS vars (`--font-body`, `--font-heading`, `--font-mono`) in `index.css`
-- Metadata is now at `content/_data/metadata.js` — config uses `data: "_data"` (relative to `content/` input)
-- CSS rebuilt from folio base — color variables follow folio pattern (`--color-bg`, `--color-text`, `--color-link`, etc.)
-- Port: `--port=8088` (family uses 8082/8084/8086)
-- `breaks: false` in markdown-it (matches template family)
+- Prism injects its CSS *after* index.css (per-page bundle), so specificity must beat `code[class*="language-"]` at `1em` — solved with `main pre[class*="language-"]`
+- Measure is `min(90%, 40rem)` — rem-based so header/main/footer all same width
+- Post counter: `counter-reset: postlist-counter var(--postlist-index)` + `counter-increment: postlist-counter -1`; `--postlist-index` set in postslist.njk to `postslistCounter or postslist.length` (removed old `+1`)
+- Font swap to Typekit: 2 `<link>` tags in base.njk (marked `<!-- fonts: -->`) + 3 CSS vars
 
 ## Next Session
 
-Run `npm start` and spot-check posts visually. Fix post list numbering (should count down, not up). Consider what's needed for prose-blog template derivation.
+Verify CSS fixes visually. Then move to prose-blog template derivation or remaining design polish.

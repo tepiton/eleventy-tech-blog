@@ -17,7 +17,7 @@
 	--color-border: #d6d0c6;
 	--color-code-bg: rgba(0, 0, 0, 0.06);
 	--color-table-stripe: rgba(0, 0, 0, 0.04);
-	--measure: min(90%, 66ch);
+	--measure: min(90%, 40rem);
 
 	--syntax-tab-size: 2;
 }
@@ -425,7 +425,7 @@ code {
 }
 
 code:not([class]) {
-	font-size: 0.88em;
+	font-size: 0.85em;
 	background: var(--color-code-bg);
 	padding: 0.15em 0.3em;
 	border-radius: 3px;
@@ -440,16 +440,18 @@ pre:not([class*="language-"]) {
 	overflow-x: auto;
 }
 
-pre[class*="language-"] {
-	font-size: 0.85em;
+/* Higher specificity to override Prism's 1em default */
+main pre[class*="language-"] {
+	font-size: 0.8em;
 	line-height: 1.4;
 	margin: 0.5em 0;
 	border-radius: 4px;
 	overflow-x: auto;
 }
 
-pre[class*="language-"] code {
+main pre[class*="language-"] code[class*="language-"] {
 	font-family: var(--font-mono);
+	font-size: 1em; /* relative to the pre's 0.8em */
 }
 
 /* =======================================================
@@ -512,11 +514,11 @@ details > *:not(summary) {
 .postlist {
 	list-style: none;
 	padding: 0;
-	counter-reset: postlist-counter;
+	counter-reset: postlist-counter var(--postlist-index);
 }
 
 .postlist-item {
-	counter-increment: postlist-counter;
+	counter-increment: postlist-counter -1;
 	margin-bottom: 1.5em;
 	position: relative;
 	padding-left: 2.5em;

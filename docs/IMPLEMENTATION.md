@@ -44,8 +44,10 @@ See: `chronicles/phase-0-baseline.md`
 
 ### Open items
 
-- [ ] **1.7** Post list numbering: should count down (newest = highest number), not up
-- [ ] Design review: footnotes, code blocks, mermaid on real posts
+- [x] **1.7** Post list numbering: counts down from total (postslist.njk + CSS counter)
+- [x] **1.8** Measure: `min(90%, 40rem)` — rem-based, header/body same width
+- [x] **1.9** Code block font size: `main pre[class*="language-"]` at `0.8em` beats Prism's 1em
+- [ ] Visual verify in browser
 
 ### What's next
 

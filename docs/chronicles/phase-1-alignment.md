@@ -35,4 +35,19 @@
 
 **Files**: `content/_data/`, `css/index.css`, `_includes/layouts/base.njk`, `eleventy.config.js`, `package.json`
 
+---
+
+## Entry 3: CSS polish — code size, measure, post numbering (2026-03-31)
+
+**What**: Fixed three visual issues spotted in browser spot-check.
+
+**Why**: Code blocks were Prism-oversized, header/body widths didn't match, post list counted up instead of down.
+
+**How**:
+- Code blocks: `main pre[class*="language-"]` at `0.8em` beats Prism's per-page `1em` injection
+- Measure: `ch`-based → `min(90%, 40rem)` so header/main/footer all same width regardless of font-size
+- Post counter: `counter-reset: postlist-counter var(--postlist-index)` + `counter-increment: -1`; removed `+1` from postslist.njk
+
+**Files**: `css/index.css`, `_includes/postslist.njk`
+
 **Decisions**: DEC-001 through DEC-004 in DECISIONS.md
