@@ -1,12 +1,12 @@
 ---
 phase: 1
-updated: 2026-03-31
-last_commit: e22f2d0
+updated: 2026-04-01
+last_commit: d7af532
 ---
 
 # Current Focus
 
-Design polish: footer layout, typography, background color.
+Repo renamed from pborenstein.dev to eleventy-tech-blog. README rewritten as a generic template README.
 
 ## Active Tasks
 
@@ -16,15 +16,16 @@ Design polish: footer layout, typography, background color.
 - [x] Body font: JetBrains Mono
 - [x] Background: #eeede9 warm gray
 - [x] About nav title capitalized
+- [x] Rename repo to eleventy-tech-blog; write template README
 
 ## Context
 
 - Body font is now JetBrains Mono (loaded in base.njk Google Fonts link alongside Inter)
 - Footer is split: `<span>` for name (left) and `<span>` for Made in New England + flag (right)
 - Single border-top on `footer`, no border on `.links-nextprev`
-- `main` padding-bottom reduced to 1.5rem to tighten post nav / footer gap
 - Background `#eeede9` — two steps darker than family default `#fffff8`
+- Prose counterpart is eleventy-prose-blog (renamed from pborenstein.com)
 
 ## Next Session
 
-Continue design polish or begin prose-blog template derivation.
+Continue design polish. Consider typography hierarchy review.

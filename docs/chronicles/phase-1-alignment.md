@@ -66,3 +66,15 @@
 - About nav title: added `title: About` to eleventyNavigation front matter
 
 **Files**: commit e22f2d0
+
+---
+
+## Entry 5: Repo renamed to eleventy-tech-blog (2026-04-01)
+
+**What**: Renamed directory from `pborenstein.dev` to `eleventy-tech-blog`. Rewrote README as a generic template README.
+
+**Why**: Making this a distributable template in the eleventy- family. Paired with eleventy-prose-blog (renamed from pborenstein.com).
+
+**How**: Directory rename; README rewritten following the pattern of the other eleventy- template READMEs (quick start, customization, structure, npm scripts, features, deploy). Mermaid diagram usage documented.
+
+**Files**: `README.md`
