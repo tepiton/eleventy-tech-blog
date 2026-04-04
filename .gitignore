@@ -97,7 +97,7 @@ typings/
 #      V  generated |
 _site/
 node_modules/
-package-lock.json
+# package-lock.json
 .cache
 .obsidian/
 content/.obsidian/
