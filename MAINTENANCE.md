@@ -1,6 +1,6 @@
 # Site Maintenance Guide
 
-This document outlines how to maintain both `pborenstein.dev` and `pborenstein.com` sites, ensuring that improvements benefit both projects.
+This document outlines how to maintain both `eleventy-tech-blog` and `eleventy-prose-blog` sites, ensuring that improvements benefit both projects.
 
 ## Overview
 
@@ -67,8 +67,8 @@ Both sites use CSS custom properties for theming:
 ## Site-Specific Differences
 
 ### Domain and Metadata
-- `pborenstein.dev` - Development blog with technical focus
-- `pborenstein.com` - Personal blog with broader content
+- `eleventy-tech-blog` - Development blog with technical focus
+- `eleventy-prose-blog` - Prose blog with broader content
 - Each has unique metadata in `_data/metadata.js`
 
 ### Content Structure
@@ -95,7 +95,7 @@ When working on shared features, use descriptive branch names:
 ### Commit Messages
 Include both sites when committing shared changes:
 ```bash
-git commit -m "Add popup footnotes to both pborenstein.dev and pborenstein.com
+git commit -m "Add popup footnotes to both eleventy-tech-blog and eleventy-prose-blog
 
 - Enhanced separateFootnotes filter with data attributes
 - Added footnote-interactions.js for popup behavior

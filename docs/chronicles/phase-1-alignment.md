@@ -2,7 +2,7 @@
 
 ## Entry 1: Session start (2026-03-30)
 
-**What**: Starting alignment of pborenstein.dev with eleventy template family conventions.
+**What**: Starting alignment of eleventy-tech-blog with eleventy template family conventions.
 
 **Why**: The repo will serve as the basis for a prose-blog template. Needs to feel like a family member. Also establishes font-swap infrastructure for future Typekit use.
 
@@ -22,7 +22,7 @@
 
 **What**: Completed all template family alignment tasks. Build passes cleanly: 59 files.
 
-**Why**: pborenstein.dev needs to be a coherent member of the eleventy template family and serve as the basis for a future prose-blog template.
+**Why**: eleventy-tech-blog needs to be a coherent member of the eleventy template family and serve as the basis for a future prose-blog template.
 
 **How**:
 - Moved `_data/` → `content/_data/` (metadata.js + eleventyDataSchema.js)
@@ -71,10 +71,24 @@
 
 ## Entry 5: Repo renamed to eleventy-tech-blog (2026-04-01)
 
-**What**: Renamed directory from `pborenstein.dev` to `eleventy-tech-blog`. Rewrote README as a generic template README.
+**What**: Renamed directory from `eleventy-tech-blog` to `eleventy-tech-blog`. Rewrote README as a generic template README.
 
-**Why**: Making this a distributable template in the eleventy- family. Paired with eleventy-prose-blog (renamed from pborenstein.com).
+**Why**: Making this a distributable template in the eleventy- family. Paired with eleventy-prose-blog (renamed from eleventy-prose-blog).
 
 **How**: Directory rename; README rewritten following the pattern of the other eleventy- template READMEs (quick start, customization, structure, npm scripts, features, deploy). Mermaid diagram usage documented.
 
 **Files**: `README.md`
+
+---
+
+## Entry 6: De-personalize template (2026-09-05)
+
+**What**: Removed Philip's real identity (name, email, `pborenstein.dev`, socials) and personal essays from the template; added generic placeholder metadata and a purpose-built demo post.
+
+**Why**: Prerequisite for the mimeo template-parameterization backlog item — this template shipped as a fork of a real personal blog. See DEC-005.
+
+**How**: Deleted 9 personal posts, kept 4 generic tutorials, added `welcome.md`. Genericized `metadata.js`, `package.json`, `base.njk`, `CLAUDE.md`, `MAINTENANCE.md`, docs. Also added GitHub Pages deploy workflow and tracked `package-lock.json` (separate small change, same commit range). Build verified clean.
+
+**Decisions**: DEC-005
+
+**Files**: `content/_data/metadata.js`, `package.json`, `_includes/layouts/base.njk`, `CLAUDE.md`, `MAINTENANCE.md`, `content/posts/*`, `docs/*`

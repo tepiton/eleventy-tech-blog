@@ -1,8 +1,8 @@
-# Plan: Align pborenstein.dev with eleventy template family conventions
+# Plan: Align eleventy-tech-blog with eleventy template family conventions
 
 ## Context
 
-pborenstein.dev is a dev blog built on Eleventy. The template family (eleventy-chapbook, eleventy-folio, eleventy-pamphlet) has established conventions for directory structure, config patterns, font loading, CSS architecture, and data organization. The goal is to align pborenstein.dev with those conventions so it feels like a coherent member of the family — and so it can serve as the basis for a future prose-blog template using Typekit fonts.
+eleventy-tech-blog is a dev blog built on Eleventy. The template family (eleventy-chapbook, eleventy-folio, eleventy-pamphlet) has established conventions for directory structure, config patterns, font loading, CSS architecture, and data organization. The goal is to align eleventy-tech-blog with those conventions so it feels like a coherent member of the family — and so it can serve as the basis for a future prose-blog template using Typekit fonts.
 
 Key decisions:
 - **Post ordering**: Keep reverse-chrono for now (not in scope)
@@ -83,7 +83,7 @@ To swap to Typekit later: change the two `<link>` tags + update the three CSS va
 
 Critical files:
 - `/Users/philip/projects/mimeo-sites/TEMPLATES/eleventy-folio/css/index.css` (source)
-- `/Users/philip/projects/mimeo-sites/TEMPLATES/pborenstein.dev/css/index.css` (current)
+- `/Users/philip/projects/mimeo-sites/TEMPLATES/eleventy-tech-blog/css/index.css` (current)
 
 ---
 

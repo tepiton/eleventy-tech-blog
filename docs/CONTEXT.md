@@ -1,31 +1,28 @@
 ---
 phase: 1
-updated: 2026-04-01
-last_commit: d7af532
+updated: 2026-09-05
+last_commit: baff944
 ---
 
 # Current Focus
 
-Repo renamed from pborenstein.dev to eleventy-tech-blog. README rewritten as a generic template README.
+Template de-personalized: personal identity and essays removed, generic placeholders and demo content added. GitHub Pages CI already in place from prior session.
 
 ## Active Tasks
 
-- [x] Visual verify CSS fixes from prior session
-- [x] Nav footer: remove bullets, shorten labels
-- [x] Site footer: New England flag, name/place flush left/right
-- [x] Body font: JetBrains Mono
-- [x] Background: #eeede9 warm gray
-- [x] About nav title capitalized
-- [x] Rename repo to eleventy-tech-blog; write template README
+- [x] GitHub Pages deploy workflow, package-lock.json tracked
+- [x] Remove 9 personal posts; keep 4 generic git/eleventy tutorials
+- [x] Add generic `welcome.md` demo post
+- [x] Genericize metadata.js, package.json, base.njk, CLAUDE.md, MAINTENANCE.md, docs/*
+- [x] Verify build passes
 
 ## Context
 
-- Body font is now JetBrains Mono (loaded in base.njk Google Fonts link alongside Inter)
-- Footer is split: `<span>` for name (left) and `<span>` for Made in New England + flag (right)
-- Single border-top on `footer`, no border on `.links-nextprev`
-- Background `#eeede9` — two steps darker than family default `#fffff8`
-- Prose counterpart is eleventy-prose-blog (renamed from pborenstein.com)
+- Same de-personalization pass applied in parallel to eleventy-prose-blog (separate session/repo)
+- Kept posts (`categories.md`, `collections.md`, `dotdotnotation.md`, `rebase-hint.md`) demo tag/collection features with no identity leak
+- `base.njk` twitter:creator now conditional on `metadata.author.social.bluesky` — no longer hardcoded
+- See DEC-005 in DECISIONS.md for full rationale
 
 ## Next Session
 
-Continue design polish. Consider typography hierarchy review.
+Continue design polish, or move to mimeo template-parameterization backlog item now that de-personalization prerequisite is done.

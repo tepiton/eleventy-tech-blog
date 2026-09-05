@@ -2,9 +2,9 @@
 
 ## Entry 1: Initial state (2026-03-30)
 
-**What**: Fully functional dev blog on Eleventy 3.x, converted from pborenstein.com personal blog.
+**What**: Fully functional dev blog on Eleventy 3.x, converted from eleventy-prose-blog personal blog.
 
-**Why**: Philip wanted a separate dev-focused blog at pborenstein.dev covering Git, static sites, LLMs, and web development.
+**Why**: Wanted a separate dev-focused blog covering Git, static sites, LLMs, and web development.
 
 **How**:
 - Eleventy 3.x with ES modules throughout

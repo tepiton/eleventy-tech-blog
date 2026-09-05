@@ -1,27 +1,27 @@
 export default {
 	// Site metadata
-	title: "pborenstein.dev",
-	url: "https://pborenstein.dev/",
+	title: "Tech Blog",
+	url: "https://example.com/",
 	language: "en",
-	description: "I take things apart to understand how they work, then write about what I learned. Mostly Git, static sites, LLMs, and the occasional CSS hack.",
-	tagline: "Taking things apart to see how they work.",
+	description: "A description of this site.",
+	tagline: "A tagline for this site.",
 
 	// Author information
 	author: {
-		name: "Philip Borenstein",
-		email: "pborenstein@gmail.com",
-		url: "https://pborenstein.dev/about/",
+		name: "Author Name",
+		email: "author@example.com",
+		url: "https://example.com/about/",
 		social: {
-			github: "pborenstein",
-			bluesky: "@pborenstein.dev"
+			github: "",
+			bluesky: ""
 		}
 	},
 
 	// Feed configuration
 	feed: {
-		subtitle: "Taking things apart to see how they work.",
+		subtitle: "A tagline for this site.",
 		path: "/feed/feed.xml",
-		id: "https://pborenstein.dev/",
+		id: "https://example.com/",
 		limit: 10
 	},
 

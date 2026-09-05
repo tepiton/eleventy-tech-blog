@@ -25,7 +25,7 @@ See: `chronicles/phase-0-baseline.md`
 
 ## Phase 1: Template family alignment (In Progress)
 
-**Objective**: Make pborenstein.dev a coherent member of the eleventy template family.
+**Objective**: Make eleventy-tech-blog a coherent member of the eleventy template family.
 
 ### Tasks
 
@@ -53,6 +53,8 @@ See: `chronicles/phase-0-baseline.md`
 - [x] **1.12** Body font: JetBrains Mono via Google Fonts
 - [x] **1.13** Background: #eeede9 warm gray
 - [x] **1.14** About nav title: capitalized via eleventyNavigation title field
+- [x] **1.15** GitHub Pages deploy workflow added (`.github/workflows/pages.yml`), `package-lock.json` tracked for `npm ci`
+- [x] **1.16** De-personalize template: generic metadata/package.json/base.njk, personal posts removed, `welcome.md` added — see DEC-005
 
 ### What's next
 

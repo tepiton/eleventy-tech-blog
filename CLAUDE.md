@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is Philip Borenstein's development blog. It is based on his personal blog, which features:
+This is a development-focused blog template built with Eleventy. It features:
 
 - Static site generation with Nunjucks templating
 - Blog posts with footnote support and syntax highlighting
@@ -96,7 +96,7 @@ npm run benchmark
 **Target**: Fully functional development blog with enhanced technical features
 
 ### Phase 1: Domain Migration ✅ COMPLETE
-**Objective**: Update all pborenstein.com references to pborenstein.dev
+**Objective**: Update all legacy domain references to the current template naming
 **Completed**:
 - Updated `_data/metadata.js` with new domain and metadata
 - Updated all references throughout the site
@@ -132,7 +132,7 @@ npm run benchmark
 **Completed**:
 - Build process verification: Clean build, 58 files generated
 - Mermaid rendering: Working correctly in git workflow posts
-- Domain reference validation: All using pborenstein.dev
+- Domain reference validation: All using the template's placeholder domain
 - RSS/sitemap generation: Both working with new metadata
 - Generated 38 tag pages for comprehensive tagging system
 
