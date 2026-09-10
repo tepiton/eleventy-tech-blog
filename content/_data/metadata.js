@@ -9,8 +9,6 @@ export default {
 	// Author information
 	author: {
 		name: "Author Name",
-		email: "author@example.com",
-		url: "https://example.com/about/",
 		social: {
 			github: "",
 			bluesky: ""
@@ -21,7 +19,6 @@ export default {
 	feed: {
 		subtitle: "A tagline for this site.",
 		path: "/feed/feed.xml",
-		id: "https://example.com/",
 		limit: 10
 	},
 
