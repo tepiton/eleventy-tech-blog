@@ -5,7 +5,8 @@
 | Phase | Name | Status |
 |-------|------|--------|
 | 0 | Pre-alignment baseline | Complete |
-| 1 | Template alignment | Complete (pending review) |
+| 1 | Template alignment | Complete |
+| 2 | Maintenance | Complete |
 
 ---
 
@@ -23,7 +24,7 @@ See: `chronicles/phase-0-baseline.md`
 
 ---
 
-## Phase 1: Template family alignment (In Progress)
+## Phase 1: Template family alignment (Complete)
 
 **Objective**: Make eleventy-tech-blog a coherent member of the eleventy template family.
 
@@ -60,3 +61,17 @@ See: `chronicles/phase-0-baseline.md`
 
 - This repo becomes the basis for a prose-blog template
 - Font swap is trivial: 2 `<link>` tags in `base.njk` + 3 CSS vars in `index.css`
+
+---
+
+## Phase 2: Maintenance (2026-10-03)
+
+See: `chronicles/phase-2-maintenance.md`
+
+- [x] jsdom ^26 → ^30 (whatwg-encoding deprecation cleared; footnote
+      filter verified on the new major)
+- [x] Stale `sharp@0.33.5` allowScripts pin dropped (matches nothing —
+      sharp 0.35.x has no install script)
+- [x] `engines.node` → "^22.22.2 || ^24.15.0 || >=26.0.0"; `.nvmrc` 24
+- [x] `.npmrc`: `fund=false` + `audit=false` (DEC-006)
+- [x] Phase 1 relabeled Complete — all 17 tasks checked, none open

@@ -71,3 +71,24 @@ Architectural decisions for eleventy-tech-blog.
 **Why**: A template repo shouldn't carry the original author's real name/email/domain or personal writing. Prerequisite for the mimeo template-parameterization backlog item.
 
 **How to apply**: Deleted 9 personal posts (real essays with pborenstein.dev/email/github references); kept `categories.md`, `collections.md`, `dotdotnotation.md`, `rebase-hint.md` (already-generic git/eleventy tutorials); added `welcome.md` as new generic demo content covering code blocks, footnotes, tables, and Mermaid. Genericized `metadata.js`, `package.json` (dropped personal `repository`/`homepage`/`author` fields), `base.njk` (twitter:creator now reads `metadata.author.social.bluesky` conditionally), `CLAUDE.md`, `MAINTENANCE.md`, and `docs/*` domain references.
+
+---
+
+### DEC-006: Quiet installs — fund/audit silenced in committed .npmrc (2026-10-03)
+
+**Status**: Active — revisit when eleventy 4 ships
+
+**Context**: npm audit reports high-severity findings rooted in
+braces→chokidar under eleventy/dev-server/nunjucks. No fixed release
+exists (braces 3.0.3 is latest; npm's only suggested fix is downgrading
+to eleventy 0.6.0). The chain runs only in the `--serve` file watcher —
+it never loads during build or CI. Consumers cannot remediate it either.
+
+**Decision**: Commit `.npmrc` with `fund=false` and `audit=false` so
+install-time output is silent. `npm audit` still reports on demand.
+Drop `audit=false` when eleventy 4 (chokidar 5) lands.
+
+**Alternatives**: `npm audit fix --force` (eleventy 0.6.0 — absurd);
+forcing chokidar 4/5 via overrides (breaks glob-based watching on
+eleventy 3); leaving the report visible (alarms consumers who cannot
+act on it).
