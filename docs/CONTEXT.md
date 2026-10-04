@@ -1,28 +1,35 @@
 ---
-phase: 1
-updated: 2026-09-05
-last_commit: baff944
+phase: 2
+phase_name: Maintenance
+updated: 2026-10-03
+last_commit: 798f11f
 ---
 
 # Current Focus
 
-Template de-personalized: personal identity and essays removed, generic placeholders and demo content added. GitHub Pages CI already in place from prior session.
+npm 12 install-hygiene pass complete (Phase 2): jsdom ^30, truthful
+Node floor, silent fresh installs. Phase 1 alignment closed out (all
+17 tasks were already done; the label had drifted).
 
 ## Active Tasks
 
-- [x] GitHub Pages deploy workflow, package-lock.json tracked
-- [x] Remove 9 personal posts; keep 4 generic git/eleventy tutorials
-- [x] Add generic `welcome.md` demo post
-- [x] Genericize metadata.js, package.json, base.njk, CLAUDE.md, MAINTENANCE.md, docs/*
-- [x] Verify build passes
+- [ ] Drop `audit=false` from `.npmrc` when eleventy 4 ships (DEC-006)
 
 ## Context
 
-- Same de-personalization pass applied in parallel to eleventy-prose-blog (separate session/repo)
-- Kept posts (`categories.md`, `collections.md`, `dotdotnotation.md`, `rebase-hint.md`) demo tag/collection features with no identity leak
-- `base.njk` twitter:creator now conditional on `metadata.author.social.bluesky` — no longer hardcoded
-- See DEC-005 in DECISIONS.md for full rationale
+- Tech counterpart to eleventy-prose-blog: Mermaid diagrams, Prism
+  syntax highlighting, RSS, image optimization
+- jsdom@30 powers the footnote filter (32 refs in built welcome post —
+  verified on the new major)
+- engines: ^22.22.2 || ^24.15.0 || >=26 (img@7 + jsdom@30 floors);
+  .nvmrc 24; CI node 24
+- Remaining audit findings are braces→chokidar, dev-server-only and
+  unfixable on eleventy 3; hidden from install output only (DEC-006)
+- De-personalization history: DEC-005; kept posts (`categories.md`,
+  `collections.md`, `dotdotnotation.md`, `rebase-hint.md`) demo
+  tag/collection features with no identity leak
 
 ## Next Session
 
-Continue design polish, or move to mimeo template-parameterization backlog item now that de-personalization prerequisite is done.
+Nothing queued. Design polish or the mimeo template-parameterization
+backlog item are the natural next threads.
