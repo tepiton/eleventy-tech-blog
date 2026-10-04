@@ -13,7 +13,7 @@
 	},
 	"license": "MIT",
 	"engines": {
-		"node": ">=18"
+		"node": "^22.22.2 || ^24.15.0 || >=26.0.0"
 	},
 	"devDependencies": {
 		"@11ty/eleventy": "^3.1.0",
@@ -31,11 +31,10 @@
 	"dependencies": {
 		"@kevingimbel/eleventy-plugin-mermaid": "^3.0.0",
 		"@zachleat/heading-anchors": "^1.0.3",
-		"jsdom": "^26.0.0",
+		"jsdom": "^30.0.0",
 		"mermaid": "^11.6.0"
 	},
 	"allowScripts": {
-		"sharp@0.33.5": true,
 		"fsevents@2.3.3": true
 	}
 }
