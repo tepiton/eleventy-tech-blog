@@ -2,6 +2,22 @@
 
 An Eleventy v3 starter for developer blogs. Designed for technical writing: Mermaid diagrams, syntax highlighting, light/dark theming, RSS feeds, and image optimization.
 
+Part of a family of interoperable mimeo templates:
+
+- [eleventy-prose-blog](https://github.com/tepiton/eleventy-prose-blog) — personal prose blogs
+- [eleventy-chapbook](https://github.com/tepiton/eleventy-chapbook) — chaptered literary sites
+- [eleventy-pamphlet](https://github.com/tepiton/eleventy-pamphlet) — short literary works
+- [eleventy-product](https://github.com/tepiton/eleventy-product) — product landing pages
+- [eleventy-service](https://github.com/tepiton/eleventy-service) — service business landing pages
+
+Sites are provisioned with [mimeo](https://github.com/pborenstein/mimeo):
+
+```bash
+mimeo create yourdomain.com --template tepiton/eleventy-tech-blog
+```
+
+The `content/` directory is portable across the document templates (chapbook, pamphlet, prose-blog, tech-blog) under the [content contract](https://github.com/tepiton/content-fixture/blob/main/CONTENT-CONTRACT.md). Swap templates to change the presentation without touching your content.
+
 ## Quick start
 
 ```
@@ -138,4 +154,4 @@ js/
 
 ## Deploy
 
-Netlify and Vercel config files are included. For GitHub Pages, add a `.github/workflows/pages.yml` build workflow.
+Pushing to `main` deploys via the included `.github/workflows/pages.yml` (GitHub Pages, Node 24, `npm ci`). Netlify and Vercel config files are also included.

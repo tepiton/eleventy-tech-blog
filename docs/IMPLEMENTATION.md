@@ -75,3 +75,7 @@ See: `chronicles/phase-2-maintenance.md`
 - [x] `engines.node` → "^22.22.2 || ^24.15.0 || >=26.0.0"; `.nvmrc` 24
 - [x] `.npmrc`: `fund=false` + `audit=false` (DEC-006)
 - [x] Phase 1 relabeled Complete — all 17 tasks checked, none open
+- [x] README aligned with the 2026-10-04 template consolidation
+      (2026-10-09): family block + mimeo provisioning + content-contract
+      link; deploy section now describes the shipped `pages.yml`;
+      superseded `gh-pages.yml.sample` deleted

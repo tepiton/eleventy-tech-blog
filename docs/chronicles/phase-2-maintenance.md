@@ -28,3 +28,26 @@ already checked, none open; the label had drifted.
 **Decisions**: DEC-006.
 
 **Files**: commit 3ce2f02
+
+---
+
+## Entry 2: README catches up with the template consolidation (2026-10-09)
+
+**What**: README aligned with the 2026-10-04 consolidation: family
+block (five sibling templates), mimeo provisioning snippet, and a
+content-contract paragraph naming the four document templates
+(chapbook, pamphlet, prose-blog, tech-blog). Deploy section fixed —
+it told users to add a `pages.yml`, but the repo already ships one
+(push to main deploys, Node 24, `npm ci`). Superseded
+`gh-pages.yml.sample` deleted.
+
+**Why**: The consolidation retired folio and synced `pages.yml` into
+the blogs, but this README never caught up. Family block matches the
+eleventy-product/eleventy-service convention.
+
+**How**: Docs only; no code changed.
+
+**Decisions**: None new — recorded here only; nothing added to
+DECISIONS.md.
+
+**Files**: commit 152d5b8
